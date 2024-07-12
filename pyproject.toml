@@ -2,8 +2,8 @@
 name = "WTForms"
 description = "Form validation and rendering for Python web development."
 readme = "README.rst"
-license = {file = "LICENSE.rst"}
-maintainers = [{name = "WTForms"}]
+license = { file = "LICENSE.rst" }
+maintainers = [{ name = "WTForms" }]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
@@ -13,7 +13,7 @@ classifiers = [
     "Programming Language :: Python",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 dependencies = [
     "MarkupSafe",
 ]
@@ -28,6 +28,11 @@ Chat = "https://discord.gg/pallets"
 
 [project.optional-dependencies]
 email = ["email_validator"]
+tests = [
+    "pytest>=8.2.2",
+    "babel>=2.15.0",
+]
+
 
 [build-system]
 requires = ["hatchling"]
@@ -105,3 +110,32 @@ per-file-ignores = [
     # __init__ modules export names
     "**/__init__.py: F401, F403",
 ]
+
+[tool.ruff.lint]
+select = [
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "F", # pyflakes
+    "I", # isort
+    "B", # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501", # line too long, handled by black
+    "B008", # do not perform function calls in argument defaults
+    "C901", # too complex
+    "W191", # indentation contains tabs
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.isort]
+known-third-party = ["fastapi", "pydantic", "starlette"]
+
+[tool.ruff.lint.pyupgrade]
+# Preserve types, even if a file imports `from __future__ import annotations`.
+keep-runtime-typing = true
+
+[tool.pdm]
