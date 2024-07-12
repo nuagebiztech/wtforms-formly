@@ -1,7 +1,5 @@
 import pytest
-
-from wtforms.validators import AnyOf
-from wtforms.validators import ValidationError
+from wtforms_formly.validators import AnyOf, ValidationError
 
 
 @pytest.mark.parametrize("test_v, test_list", [("b", ["a", "b", "c"]), (2, [1, 2, 3])])

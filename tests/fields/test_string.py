@@ -1,7 +1,7 @@
-from tests.common import DummyPostData
+from wtforms_formly.fields import StringField
+from wtforms_formly.form import Form
 
-from wtforms.fields import StringField
-from wtforms.form import Form
+from tests.common import DummyPostData
 
 
 class F(Form):

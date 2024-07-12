@@ -1,7 +1,5 @@
 import pytest
-
-from wtforms.validators import data_required
-from wtforms.validators import StopValidation
+from wtforms_formly.validators import StopValidation, data_required
 
 
 def test_data_required(dummy_form, dummy_field):

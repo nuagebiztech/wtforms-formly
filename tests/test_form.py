@@ -1,13 +1,10 @@
 import pytest
-from tests.common import DummyPostData
+from wtforms_formly.fields import IntegerField, StringField
+from wtforms_formly.form import BaseForm, Form
+from wtforms_formly.meta import DefaultMeta
+from wtforms_formly.validators import DataRequired, ValidationError
 
-from wtforms.fields import IntegerField
-from wtforms.fields import StringField
-from wtforms.form import BaseForm
-from wtforms.form import Form
-from wtforms.meta import DefaultMeta
-from wtforms.validators import DataRequired
-from wtforms.validators import ValidationError
+from tests.common import DummyPostData
 
 
 def get_form(**kwargs):
@@ -46,7 +43,7 @@ def test_baseform_field_removal():
     form = get_form()
     del form["test"]
     with pytest.raises(AttributeError):
-        form.test
+        _ = form.test
     assert "test" not in form
 
 
@@ -61,7 +58,7 @@ def test_baseform_field_adding():
     assert isinstance(form["test"], IntegerField)
     assert len(list(form)) == 2
     with pytest.raises(AttributeError):
-        form["test"].data
+        _ = form["test"].data
     form.process(DummyPostData(test=["1"]))
     assert form["test"].data == 1
     assert form["foo"].data is None
@@ -106,7 +103,7 @@ def test_form_meta_monkeypatch():
     assert F._unbound_fields == [("a", F.a), ("b", F.b)]
     del F.a
     with pytest.raises(AttributeError):
-        F.a
+        _ = F.a
     F()
     assert F._unbound_fields == [("b", F.b)]
     F._m = StringField()
@@ -293,7 +290,7 @@ def test_errors_access_during_validation():
 
         def validate(self):
             super().validate()
-            self.errors
+            _ = self.errors
             self.foo.errors.append("bar")
             return True
 

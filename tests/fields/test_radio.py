@@ -1,8 +1,8 @@
-from tests.common import DummyPostData
+from wtforms_formly import validators
+from wtforms_formly.fields import RadioField
+from wtforms_formly.form import Form
 
-from wtforms import validators
-from wtforms.fields import RadioField
-from wtforms.form import Form
+from tests.common import DummyPostData
 
 
 def make_form(name="F", **fields):
@@ -107,7 +107,7 @@ def test_required_validator():
 def test_render_kw_preserved():
     F = make_form(
         a=RadioField(
-            choices=[(True, "yes"), (False, "no")], render_kw=dict(disabled=True)
+            choices=[(True, "yes"), (False, "no")], render_kw={"disabled": True}
         )
     )
     form = F()

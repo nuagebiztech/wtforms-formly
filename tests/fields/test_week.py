@@ -1,9 +1,9 @@
 from datetime import date
 
-from tests.common import DummyPostData
+from wtforms_formly.fields import WeekField
+from wtforms_formly.form import Form
 
-from wtforms.fields import WeekField
-from wtforms.form import Form
+from tests.common import DummyPostData
 
 
 class F(Form):

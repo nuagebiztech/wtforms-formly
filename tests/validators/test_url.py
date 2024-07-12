@@ -1,7 +1,5 @@
 import pytest
-
-from wtforms.validators import url
-from wtforms.validators import ValidationError
+from wtforms_formly.validators import ValidationError, url
 
 
 @pytest.mark.parametrize(

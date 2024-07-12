@@ -1,9 +1,7 @@
 import re
 
 import pytest
-
-from wtforms.validators import regexp
-from wtforms.validators import ValidationError
+from wtforms_formly.validators import ValidationError, regexp
 
 
 def grab_error_message(callable, form, field):

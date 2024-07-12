@@ -1,6 +1,6 @@
 [project]
-name = "WTForms"
-description = "Form validation and rendering for Python web development."
+name = "wtforms_formly"
+description = "Form validation and rendering for Python web development with formly"
 readme = "README.rst"
 license = { file = "LICENSE.rst" }
 maintainers = [{ name = "WTForms" }]
@@ -39,10 +39,10 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/wtforms"]
+packages = ["src/wtforms_formly"]
 
 [tool.hatch.version]
-path = "src/wtforms/__init__.py"
+path = "src/wtforms_formly/__init__.py"
 
 [tool.hatch.build]
 include = [
@@ -55,7 +55,7 @@ include = [
 exclude = [
     "docs/_build/",
 ]
-artifacts = ["src/wtforms/locale/**/*.mo"]
+artifacts = ["src/wtforms_formly/locale/**/*.mo"]
 
 [tool.hatch.build.hooks.custom]
 dependencies = [
@@ -71,7 +71,7 @@ filterwarnings = [
 
 [tool.coverage.run]
 branch = true
-source = ["wtforms", "tests"]
+source = ["wtforms_formly", "tests"]
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -139,3 +139,4 @@ known-third-party = ["fastapi", "pydantic", "starlette"]
 keep-runtime-typing = true
 
 [tool.pdm]
+distribution = true

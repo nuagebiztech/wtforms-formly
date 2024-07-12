@@ -1,7 +1,5 @@
 import pytest
-
-from wtforms.validators import optional
-from wtforms.validators import StopValidation
+from wtforms_formly.validators import StopValidation, optional
 
 
 def test_input_optional_passes(dummy_form, dummy_field):

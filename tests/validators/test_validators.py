@@ -1,7 +1,5 @@
 import pytest
-
-from wtforms import Form
-from wtforms import StringField
+from wtforms_formly import Form, StringField
 
 
 @pytest.mark.parametrize("exc", [IndexError, ZeroDivisionError, ValueError])

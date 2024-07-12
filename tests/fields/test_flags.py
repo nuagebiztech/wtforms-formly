@@ -1,8 +1,7 @@
 import pytest
-
-from wtforms import validators
-from wtforms.fields import StringField
-from wtforms.form import Form
+from wtforms_formly import validators
+from wtforms_formly.fields import StringField
+from wtforms_formly.form import Form
 
 
 @pytest.fixture()
@@ -31,11 +30,11 @@ def test_unset(flags):
 
 
 def test_repr(flags):
-    assert repr(flags) == "<wtforms.fields.Flags: {required=True}>"
+    assert repr(flags) == "<wtforms_formly.fields.Flags: {required=True}>"
 
 
 def test_underscore_property(flags):
     with pytest.raises(AttributeError):
-        flags._foo
+        _ = flags._foo
     flags._foo = 42
     assert flags._foo == 42

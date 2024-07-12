@@ -1,8 +1,6 @@
 import pytest
-
-from wtforms.fields import SelectFieldBase
-from wtforms.fields import StringField
-from wtforms.form import Form
+from wtforms_formly.fields import SelectFieldBase, StringField
+from wtforms_formly.form import Form
 
 
 class MyCustomField(StringField):

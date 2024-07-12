@@ -1,7 +1,5 @@
 import pytest
-
-from wtforms.validators import email
-from wtforms.validators import ValidationError
+from wtforms_formly.validators import ValidationError, email
 
 
 @pytest.mark.parametrize(

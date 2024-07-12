@@ -1,6 +1,5 @@
 import pytest
-
-from wtforms.i18n import DummyTranslations
+from wtforms_formly.i18n import DummyTranslations
 
 
 @pytest.fixture

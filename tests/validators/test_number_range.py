@@ -1,9 +1,7 @@
 import decimal
 
 import pytest
-
-from wtforms.validators import NumberRange
-from wtforms.validators import ValidationError
+from wtforms_formly.validators import NumberRange, ValidationError
 
 
 @pytest.mark.parametrize(

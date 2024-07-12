@@ -1,5 +1,5 @@
-from wtforms.fields import SubmitField
-from wtforms.form import Form
+from wtforms_formly.fields import SubmitField
+from wtforms_formly.form import Form
 
 
 class F(Form):

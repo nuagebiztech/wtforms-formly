@@ -1,21 +1,22 @@
 import pytest
 from markupsafe import Markup
-
-from wtforms.widgets.core import CheckboxInput
-from wtforms.widgets.core import ColorInput
-from wtforms.widgets.core import FileInput
-from wtforms.widgets.core import HiddenInput
-from wtforms.widgets.core import html_params
-from wtforms.widgets.core import Input
-from wtforms.widgets.core import ListWidget
-from wtforms.widgets.core import NumberInput
-from wtforms.widgets.core import PasswordInput
-from wtforms.widgets.core import RadioInput
-from wtforms.widgets.core import RangeInput
-from wtforms.widgets.core import Select
-from wtforms.widgets.core import TableWidget
-from wtforms.widgets.core import TextArea
-from wtforms.widgets.core import TextInput
+from wtforms_formly.widgets.core import (
+    CheckboxInput,
+    ColorInput,
+    FileInput,
+    HiddenInput,
+    Input,
+    ListWidget,
+    NumberInput,
+    PasswordInput,
+    RadioInput,
+    RangeInput,
+    Select,
+    TableWidget,
+    TextArea,
+    TextInput,
+    html_params,
+)
 
 
 def test_basic():
@@ -80,7 +81,7 @@ def test_tablewidget(dummy_field_class):
 
 def test_input_type():
     with pytest.raises(AttributeError):
-        Input().input_type
+        _ = Input().input_type
 
     test_input = Input(input_type="test")
     assert test_input.input_type == "test"

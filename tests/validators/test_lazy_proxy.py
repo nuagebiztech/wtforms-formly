@@ -1,13 +1,14 @@
 import pytest
-
-from wtforms.validators import data_required
-from wtforms.validators import email
-from wtforms.validators import equal_to
-from wtforms.validators import ip_address
-from wtforms.validators import length
-from wtforms.validators import NumberRange
-from wtforms.validators import regexp
-from wtforms.validators import url
+from wtforms_formly.validators import (
+    NumberRange,
+    data_required,
+    email,
+    equal_to,
+    ip_address,
+    length,
+    regexp,
+    url,
+)
 
 
 def test_lazy_proxy_raises(really_lazy_proxy):

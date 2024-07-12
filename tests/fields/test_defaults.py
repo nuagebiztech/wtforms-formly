@@ -1,6 +1,6 @@
-from wtforms.fields import StringField
-from wtforms.form import Form
-from wtforms.utils import unset_value
+from wtforms_formly.fields import StringField
+from wtforms_formly.form import Form
+from wtforms_formly.utils import unset_value
 
 
 def test_defaults():

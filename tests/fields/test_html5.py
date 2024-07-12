@@ -1,26 +1,27 @@
-from datetime import date
-from datetime import datetime
+from datetime import date, datetime
 from decimal import Decimal
 
-from tests.common import DummyPostData
+from wtforms_formly import validators
+from wtforms_formly.fields import (
+    DateField,
+    DateTimeField,
+    DateTimeLocalField,
+    DecimalField,
+    DecimalRangeField,
+    EmailField,
+    IntegerField,
+    IntegerRangeField,
+    PasswordField,
+    SearchField,
+    StringField,
+    TelField,
+    TextAreaField,
+    URLField,
+)
+from wtforms_formly.form import Form
+from wtforms_formly.utils import unset_value
 
-from wtforms import validators
-from wtforms.fields import DateField
-from wtforms.fields import DateTimeField
-from wtforms.fields import DateTimeLocalField
-from wtforms.fields import DecimalField
-from wtforms.fields import DecimalRangeField
-from wtforms.fields import EmailField
-from wtforms.fields import IntegerField
-from wtforms.fields import IntegerRangeField
-from wtforms.fields import PasswordField
-from wtforms.fields import SearchField
-from wtforms.fields import StringField
-from wtforms.fields import TelField
-from wtforms.fields import TextAreaField
-from wtforms.fields import URLField
-from wtforms.form import Form
-from wtforms.utils import unset_value
+from tests.common import DummyPostData
 
 
 class F(Form):
@@ -41,8 +42,8 @@ def _build_value(key, form_input, expected_html, data=unset_value):
     if data is unset_value:
         data = form_input
     if expected_html.startswith("type="):
-        expected_html = '<input id="{}" name="{}" {} value="{}">'.format(
-            key, key, expected_html, form_input
+        expected_html = (
+            f'<input id="{key}" name="{key}" {expected_html} value="{form_input}">'
         )
     return {
         "key": key,
@@ -57,7 +58,7 @@ def test_simple():
     VALUES = (
         b("search", "search", 'type="search"'),
         b("telephone", "123456789", 'type="tel"'),
-        b("url", "http://wtforms.simplecodes.com/", 'type="url"'),
+        b("url", "http://wtforms_formly.simplecodes.com/", 'type="url"'),
         b("email", "foo@bar.com", 'type="email"'),
         b(
             "datetime",

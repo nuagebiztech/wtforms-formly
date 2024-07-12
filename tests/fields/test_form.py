@@ -1,10 +1,9 @@
 import pytest
-from tests.common import DummyPostData
+from wtforms_formly import validators
+from wtforms_formly.fields import FormField, StringField
+from wtforms_formly.form import Form
 
-from wtforms import validators
-from wtforms.fields import FormField
-from wtforms.fields import StringField
-from wtforms.form import Form
+from tests.common import DummyPostData
 
 
 class AttrDict:

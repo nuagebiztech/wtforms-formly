@@ -1,9 +1,7 @@
 import pytest
-
-from wtforms.fields import Field
-from wtforms.form import BaseForm
-from wtforms.utils import unset_value
-from wtforms.utils import WebobInputWrapper
+from wtforms_formly.fields import Field
+from wtforms_formly.form import BaseForm
+from wtforms_formly.utils import WebobInputWrapper, unset_value
 
 try:
     from webob.multidict import MultiDict

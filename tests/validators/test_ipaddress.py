@@ -1,7 +1,5 @@
 import pytest
-
-from wtforms.validators import ip_address
-from wtforms.validators import ValidationError
+from wtforms_formly.validators import ValidationError, ip_address
 
 
 @pytest.mark.parametrize("address", ["147.230.23.25", "147.230.23.0", "127.0.0.1"])

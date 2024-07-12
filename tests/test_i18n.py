@@ -1,9 +1,6 @@
 import pytest
-
-from wtforms import form
-from wtforms import StringField
-from wtforms import validators
-from wtforms.i18n import get_translations
+from wtforms_formly import StringField, form, validators
+from wtforms_formly.i18n import get_translations
 
 
 def gettext_lower(self, s):
@@ -85,12 +82,12 @@ def test_core_defaults():
 
 
 def test_core_fallback():
-    form = _common_test("This field is required.", dict(meta=dict(locales=False)))
+    form = _common_test("This field is required.", {"meta": {"locales": False}})
     assert form.a.gettext("") == ""
 
 
 def test_core_override_languages():
-    _common_test("Este campo es obligatorio.", dict(meta=dict(locales=["es_ES"])))
+    _common_test("Este campo es obligatorio.", {"meta": {"locales": ["es_ES"]}})
 
 
 def test_core_ngettext():
@@ -112,7 +109,7 @@ def test_core_ngettext():
         ),
     ]
     for languages, match1, match2 in language_settings:
-        settings = dict(a="toolong", meta=dict(locales=languages))
+        settings = {"a": "toolong", "meta": {"locales": languages}}
         _common_test(match1, settings, CoreForm2)
         _common_test(match2, settings, CoreForm3)
 

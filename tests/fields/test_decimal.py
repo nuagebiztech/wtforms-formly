@@ -1,11 +1,9 @@
-from decimal import Decimal
-from decimal import ROUND_DOWN
-from decimal import ROUND_UP
+from decimal import ROUND_DOWN, ROUND_UP, Decimal
+
+from wtforms_formly.fields import DecimalField
+from wtforms_formly.form import Form
 
 from tests.common import DummyPostData
-
-from wtforms.fields import DecimalField
-from wtforms.form import Form
 
 
 def make_form(name="F", **fields):

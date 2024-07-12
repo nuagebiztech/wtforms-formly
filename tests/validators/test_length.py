@@ -1,7 +1,5 @@
 import pytest
-
-from wtforms.validators import length
-from wtforms.validators import ValidationError
+from wtforms_formly.validators import ValidationError, length
 
 
 @pytest.mark.parametrize("min_v, max_v", [(2, 6), (6, -1), (-1, 6), (6, 6)])

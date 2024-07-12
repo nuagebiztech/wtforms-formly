@@ -1,10 +1,9 @@
 import pytest
-from tests.common import DummyPostData
+from wtforms_formly import validators
+from wtforms_formly.fields import SelectField, SelectMultipleField
+from wtforms_formly.form import Form
 
-from wtforms import validators
-from wtforms.fields import SelectField
-from wtforms.fields import SelectMultipleField
-from wtforms.form import Form
+from tests.common import DummyPostData
 
 
 def make_form(name="F", **fields):
@@ -27,7 +26,7 @@ def test_defaults():
     # Test for possible regression with null data
     form.a.data = None
     assert form.validate()
-    assert list(form.a.iter_choices()) == [(v, l, False, {}) for v, l in form.a.choices]
+    assert list(form.a.iter_choices()) == [(v, x, False, {}) for v, x in form.a.choices]
 
 
 def test_with_data():
@@ -63,7 +62,7 @@ def test_callable_choices():
     F = make_form(a=SelectField(choices=choices))
     form = F(a="bar")
 
-    assert list(str(x) for x in form.a) == [
+    assert [str(x) for x in form.a] == [
         '<option value="foo">foo</option>',
         '<option selected value="bar">bar</option>',
     ]
@@ -146,7 +145,7 @@ def test_required_validator():
 
 def test_render_kw_preserved():
     F = make_form(
-        a=SelectMultipleField(choices=[("foo"), ("bar")], render_kw=dict(disabled=True))
+        a=SelectMultipleField(choices=[("foo"), ("bar")], render_kw={"disabled": True})
     )
     form = F()
     assert form.a() == (

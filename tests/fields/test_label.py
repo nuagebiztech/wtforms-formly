@@ -1,6 +1,5 @@
-from wtforms.fields import Label
-from wtforms.fields import StringField
-from wtforms.form import Form
+from wtforms_formly.fields import Label, StringField
+from wtforms_formly.form import Form
 
 
 def test_label():

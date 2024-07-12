@@ -6,8 +6,8 @@ class CustomBuildHook(BuildHookInterface):
         from babel.messages.frontend import compile_catalog
 
         cmd = compile_catalog()
-        cmd.directory = "src/wtforms/locale/"
-        cmd.domain = "wtforms"
+        cmd.directory = "src/wtforms_formly/locale/"
+        cmd.domain = "wtforms_formly"
         cmd.statistics = True
         cmd.finalize_options()
         cmd.run()

@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from tests.common import DummyPostData
+from wtforms_formly.fields import TimeField
+from wtforms_formly.form import Form
 
-from wtforms.fields import TimeField
-from wtforms.form import Form
+from tests.common import DummyPostData
 
 
 class F(Form):

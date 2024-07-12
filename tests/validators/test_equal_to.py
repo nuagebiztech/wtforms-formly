@@ -1,8 +1,6 @@
 import pytest
-
-from wtforms import Label
-from wtforms.validators import equal_to
-from wtforms.validators import ValidationError
+from wtforms_formly import Label
+from wtforms_formly.validators import ValidationError, equal_to
 
 
 def test_equal_to_passes(dummy_form, dummy_field):

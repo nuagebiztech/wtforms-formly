@@ -1,6 +1,5 @@
 import pytest
-
-from wtforms.validators import NoneOf
+from wtforms_formly.validators import NoneOf
 
 
 def test_none_of_passes(dummy_form, dummy_field):

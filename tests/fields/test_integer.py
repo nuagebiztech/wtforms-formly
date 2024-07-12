@@ -1,7 +1,7 @@
-from tests.common import DummyPostData
+from wtforms_formly.fields import IntegerField
+from wtforms_formly.form import Form
 
-from wtforms.fields import IntegerField
-from wtforms.form import Form
+from tests.common import DummyPostData
 
 
 class F(Form):
@@ -30,7 +30,7 @@ def test_integer_field():
     assert form.b.data == 9
     assert form.a._value() == ""
     assert form.b._value() == "9"
-    form = F(DummyPostData(), data=dict(b="v"))
+    form = F(DummyPostData(), data={"b": "v"})
     assert form.b.data is None
     assert form.a._value() == ""
     assert form.b._value() == ""

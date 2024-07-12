@@ -1,6 +1,6 @@
-from wtforms import widgets
-from wtforms.fields import ColorField
-from wtforms.form import Form
+from wtforms_formly import widgets
+from wtforms_formly.fields import ColorField
+from wtforms_formly.form import Form
 
 
 class F(Form):

@@ -1,8 +1,7 @@
-from tests.common import DummyPostData
+from wtforms_formly import Form, StringField
+from wtforms_formly.validators import Disabled
 
-from wtforms import Form
-from wtforms import StringField
-from wtforms.validators import Disabled
+from tests.common import DummyPostData
 
 
 def test_disabled():

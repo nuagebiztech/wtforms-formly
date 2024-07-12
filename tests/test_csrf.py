@@ -5,12 +5,12 @@ from contextlib import contextmanager
 from functools import partial
 
 import pytest
-from tests.common import DummyPostData
+from wtforms_formly.csrf.core import CSRF
+from wtforms_formly.csrf.session import SessionCSRF
+from wtforms_formly.fields import StringField
+from wtforms_formly.form import Form
 
-from wtforms.csrf.core import CSRF
-from wtforms.csrf.session import SessionCSRF
-from wtforms.fields import StringField
-from wtforms.form import Form
+from tests.common import DummyPostData
 
 
 class DummyCSRF(CSRF):

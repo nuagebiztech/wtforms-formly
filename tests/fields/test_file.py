@@ -1,9 +1,8 @@
-from tests.common import DummyPostData
+from wtforms_formly.fields import FileField, MultipleFileField
+from wtforms_formly.form import Form
+from wtforms_formly.widgets import TextInput
 
-from wtforms.fields import FileField
-from wtforms.fields import MultipleFileField
-from wtforms.form import Form
-from wtforms.widgets import TextInput
+from tests.common import DummyPostData
 
 
 def test_file_field():

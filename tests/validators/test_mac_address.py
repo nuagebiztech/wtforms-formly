@@ -1,7 +1,5 @@
 import pytest
-
-from wtforms.validators import mac_address
-from wtforms.validators import ValidationError
+from wtforms_formly.validators import ValidationError, mac_address
 
 
 @pytest.mark.parametrize("mac_addr_val", ["01:23:45:67:ab:CD"])

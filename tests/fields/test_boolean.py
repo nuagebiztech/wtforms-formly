@@ -1,7 +1,7 @@
-from tests.common import DummyPostData
+from wtforms_formly.fields import BooleanField
+from wtforms_formly.form import Form
 
-from wtforms.fields import BooleanField
-from wtforms.form import Form
+from tests.common import DummyPostData
 
 
 class AttrDict:
@@ -26,8 +26,11 @@ def test_defaults():
 
 
 def test_rendering():
-    form = BoringForm(DummyPostData(bool2="x"))
-    assert form.bool1() == '<input id="bool1" name="bool1" type="checkbox" value="y">'
+    form = BoringForm(DummyPostData(bool2="x", _json=False))
+    assert (
+        form.bool1(json_render=False)
+        == '<input id="bool1" name="bool1" type="checkbox" value="y">'
+    )
     assert (
         form.bool2()
         == '<input checked id="bool2" name="bool2" type="checkbox" value="x">'

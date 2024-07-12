@@ -1,10 +1,9 @@
 import pytest
-from tests.common import DummyPostData
+from wtforms_formly import validators, widgets
+from wtforms_formly.fields import SelectField
+from wtforms_formly.form import Form
 
-from wtforms import validators
-from wtforms import widgets
-from wtforms.fields import SelectField
-from wtforms.form import Form
+from tests.common import DummyPostData
 
 
 def make_form(name="F", **fields):
@@ -78,7 +77,7 @@ def test_iterable_options():
     form = F()
     first_option = list(form.a)[0]
     assert isinstance(first_option, form.a._Option)
-    assert list(str(x) for x in form.a) == [
+    assert [str(x) for x in form.a] == [
         '<option selected value="a">hello</option>',
         '<option value="btest">bye</option>',
     ]
@@ -166,7 +165,7 @@ def test_callable_choices():
     F = make_form(a=SelectField(choices=choices))
     form = F(a="bar")
 
-    assert list(str(x) for x in form.a) == [
+    assert [str(x) for x in form.a] == [
         '<option value="foo">foo</option>',
         '<option selected value="bar">bar</option>',
     ]
@@ -205,7 +204,7 @@ def test_required_validator():
 
 def test_render_kw_preserved():
     F = make_form(
-        a=SelectField(choices=[("foo"), ("bar")], render_kw=dict(disabled=True))
+        a=SelectField(choices=[("foo"), ("bar")], render_kw={"disabled": True})
     )
     form = F()
     assert form.a() == (

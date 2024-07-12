@@ -1,7 +1,5 @@
 import pytest
-
-from wtforms.validators import UUID
-from wtforms.validators import ValidationError
+from wtforms_formly.validators import UUID, ValidationError
 
 
 @pytest.mark.parametrize(
