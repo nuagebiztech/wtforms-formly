@@ -312,6 +312,7 @@ class TextArea:
     """
 
     validation_attrs = ["required", "disabled", "readonly", "maxlength", "minlength"]
+    input_type = "textarea"
 
     def __call__(self, field, **kwargs):
         kwargs.setdefault("id", field.id)
@@ -322,6 +323,44 @@ class TextArea:
         return Markup(
             f"<textarea {html_params(name=field.name, **kwargs)}>\r\n{escape(field._value())}</textarea>"
         )
+
+    def __json__(self, field, **kwargs):
+        """
+        Properties:
+        type (string): The type of field (must be textarea).
+
+        Template Options:
+
+        label (string): The label for the field.
+        placeholder (string): The placeholder text for the field.
+        description (string): A description for the field.
+        required (boolean): Indicates if the field is required.
+        disabled (boolean): Indicates if the field is disabled.
+        rows (number): The number of rows for the textarea.
+        cols (number): The number of columns for the textarea.
+
+        """
+        kwargs.setdefault("id", field.id)
+        kwargs.setdefault("type", self.input_type)
+        # if "value" not in kwargs:
+        #     kwargs["value"] = field._value()
+        flags = getattr(field, "flags", {})
+        for k in dir(flags):
+            if k in self.validation_attrs and k not in kwargs:
+                kwargs[k] = getattr(flags, k)
+        props = {k: v for k, v in kwargs.items() if k not in ["id", "type"]}
+        if field.default:
+            props["defaultValue"] = field.default
+        if field.label:
+            props["label"] = field.label.text
+        if field.description:
+            props["description"] = field.description
+
+        return {
+            "key": field.name,
+            "type": self.input_type,
+            "props": props,
+        }
 
 
 class Select:

@@ -45,6 +45,7 @@ class Field:
         _prefix="",
         _translations=None,
         _meta=None,
+        _json=False,
     ):
         """
         Construct a new field.
@@ -123,6 +124,10 @@ class Field:
             else self.gettext(name.replace("_", " ").title()),
         )
 
+        # Set JSON as default return type
+        # unless __html__ is called
+        self.default_json = _json
+
         if widget is not None:
             self.widget = widget
 
@@ -142,6 +147,10 @@ class Field:
 
             for k, v in flags.items():
                 setattr(self.flags, k, v)
+
+    def __json__(self, **kwargs):
+        """Add capabilities to render_json when requested"""
+        return self.meta.render_json(self, kwargs)
 
     def __str__(self):
         """
@@ -170,8 +179,19 @@ class Field:
         HTML attributes, though in theory a widget is free to do anything it
         wants with the supplied keyword arguments, and widgets don't have to
         even do anything related to HTML.
+
+        :param kwargs:
+            Additional keyword arguments to pass to the widget.
+        :param json_render:
+            If True, return JSON rendering of the field.
+
         """
-        return self.meta.render_field(self, kwargs)
+        if self.default_json or kwargs.get("json_render", False):
+            # Return JSON rendering if the default_json is True
+            # or has been requested by json_render paarameter
+            return self.meta.render_json(self, kwargs)
+        else:
+            return self.meta.render_field(self, kwargs)
 
     @classmethod
     def check_validators(cls, validators):
